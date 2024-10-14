@@ -1,0 +1,18 @@
+def findPaths(m, n, N, i, j):
+    dp = [[[0] * (N + 1) for _ in range(n)] for _ in range(m)]
+    for steps in range(1, N + 1):
+        for x in range(m):
+            for y in range(n):
+                if x == 0: dp[x][y][steps] += 1
+                if x == m - 1: dp[x][y][steps] += 1
+                if y == 0: dp[x][y][steps] += 1
+                if y == n - 1: dp[x][y][steps] += 1
+                if x > 0: dp[x][y][steps] += dp[x - 1][y][steps - 1]
+                if x < m - 1: dp[x][y][steps] += dp[x + 1][y][steps - 1]
+                if y > 0: dp[x][y][steps] += dp[x][y - 1][steps - 1]
+                if y < n - 1: dp[x][y][steps] += dp[x][y + 1][steps - 1]
+    return dp[i][j][N]
+print(findPaths(2, 2, 2, 0, 0)) 
+print(findPaths(1, 3, 3, 0, 1)) 
+ # Output: 6
+ # Output: 12
