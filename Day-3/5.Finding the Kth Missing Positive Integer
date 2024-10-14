@@ -1,0 +1,14 @@
+def findKthPositive(arr, k):
+    missing_count, current = 0, 1
+    for num in arr:
+        while current < num:
+            missing_count += 1
+            if missing_count == k:
+                return current
+            current += 1
+        current += 1
+    return current + (k - missing_count - 1)
+print(findKthPositive([2, 3, 4, 7, 11], 5))  
+print(findKthPositive([1, 2, 3, 4], 2))     
+# Output: 9
+# Output: 6
