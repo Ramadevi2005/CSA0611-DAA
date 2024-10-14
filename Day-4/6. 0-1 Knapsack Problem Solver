@@ -1,0 +1,28 @@
+def total_value(items, values):
+    return sum(values[i] for i in items)
+def is_feasible(items, weights, capacity):
+    return sum(weights[i] for i in items) <= capacity
+# Test Cases
+items1 = [0, 1, 2]
+weights1 = [2, 3, 1]
+values1 = [4, 5, 3]
+capacity1 = 4
+items2 = [0, 1, 2, 3]
+weights2 = [1, 2, 3, 4]
+values2 = [2, 4, 6, 3]
+capacity2 = 6
+# Test Case 1
+selected_items1 = [i for i in items1 if is_feasible([i], weights1, capacity1)]
+total_value1 = total_value(selected_items1, values1)
+print("Optimal Selection:", selected_items1)
+print("Total Value:", total_value1)
+# Test Case 2
+selected_items2 = [i for i in items2 if is_feasible([i], weights2, capacity2)]
+total_value2 = total_value(selected_items2, values2)
+print("Optimal Selection:", selected_items2)
+print("Total Value:", total_value2)
+# output:
+Optimal Selection: [0, 1, 2]
+Total Value: 12
+Optimal Selection: [0, 1, 2, 3]
+Total Value: 15
