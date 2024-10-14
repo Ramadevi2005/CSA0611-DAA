@@ -1,0 +1,8 @@
+def find_maximum(nums):
+    return max(nums)
+print(find_maximum({1, 2, 3, 4, 5}))  
+print(find_maximum({7, 7, 7, 7, 7})) 
+print(find_maximum({-10, 2, 3, -4, 5}))  
+ # Expected Output: 5
+ # Expected Output: 7
+ # Expected Output: 5
