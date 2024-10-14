@@ -1,0 +1,7 @@
+nums = [5]
+nums = sorted(nums)
+maximum = max(nums
+print(nums)
+print(maximum)
+# output: [5]
+# output: 5
