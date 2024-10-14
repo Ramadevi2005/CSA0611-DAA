@@ -1,0 +1,10 @@
+def optimized_sort(lst):
+    return sorted(lst)
+test_cases = [
+    ([64, 25, 12, 22, 11], [11, 12, 22, 25, 64]),
+    ([29, 10, 14, 37, 13], [10, 13, 14, 29, 37]),
+    ([3, 5, 2, 1, 4], [1, 2, 3, 4, 5]),
+    ([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+]
+for input_list, expected in test_cases:
+    assert optimized_sort(input_list) == expected
