@@ -1,0 +1,15 @@
+def convex_hull(points):
+    def ccw(p1, p2, p3):
+        return (p3[1] - p1[1]) * (p2[0] - p1[0]) > (p2[1] - p1[1]) * (p3[0] - p1[0])
+    hull = []
+    for p in points:
+        while len(hull) >= 2 and not ccw(hull[-2], hull[-1], p):
+            hull.pop()
+        hull.append(p)
+    return hull
+
+points = [(1, 1), (4, 6), (8, 1), (0, 0), (3, 3)]
+hull = convex_hull(sorted(points))
+print(hull)
+# output:
+[(0, 0), (8, 1)]
