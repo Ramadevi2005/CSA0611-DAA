@@ -1,0 +1,15 @@
+def find_min_max(arr):
+    return min(arr), max(arr)
+# Test Cases
+test_cases = [
+    [2, 4, 6, 8, 10, 12, 14, 18],
+    [11, 13, 15, 17, 19, 21, 23, 35, 37],
+    [22, 34, 35, 36, 43, 67, 12, 13, 15, 17]
+]
+for case in test_cases:
+    min_val, max_val = find_min_max(case)
+    print(f"Min = {min_val}, Max = {max_val}")
+    # output:
+Min = 2, Max = 18
+Min = 11, Max = 37
+Min = 12, Max = 67
