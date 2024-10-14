@@ -1,0 +1,9 @@
+from collections import Counter
+def count_tuples(A, B, C, D):
+    AB_sum = Counter(a + b for a in A for b in B)
+    return sum(AB_sum[-(c + d)] for c in C for d in D)
+# Example usage
+print(count_tuples([1, 2], [-2, -1], [-1, 2], [0, 2]))  
+print(count_tuples([0], [0], [0], [0]))  
+# Output: 2
+# Output: 1
