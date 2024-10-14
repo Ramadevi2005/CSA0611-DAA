@@ -1,0 +1,7 @@
+import itertools
+import math
+points = [(1, 2), (4, 5), (7, 8), (3, 1)]
+closest_pair, min_distance = min(((p1, p2), math.dist(p1, p2)) for p1, p2 in itertools.combinations(points, 2))
+print(f"Closest pair: {closest_pair} Minimum distance: {min_distance}")
+# output:
+Closest pair: ((1, 2), (3, 1)) Minimum distance: 2.23606797749979
