@@ -1,0 +1,20 @@
+def binary_search(arr, key):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+# Test cases
+arrays = [
+    ([3, 9, 14, 19, 25, 31, 42, 47, 53], 31),
+    ([13, 19, 24, 29, 35, 41, 42], 42),
+    ([20, 40, 60, 80, 100, 120], 60)
+]
+for arr, key in arrays:
+    result = binary_search(arr, key)
+    print(f"Input: {arr}, Search Key: {key}, Output: {result}")
