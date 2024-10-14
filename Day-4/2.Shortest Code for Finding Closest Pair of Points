@@ -1,0 +1,19 @@
+import itertools
+def euclidean_distance(p1, p2):
+    return ((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)**0.5
+def closest_pair_brute_force(points):
+    min_distance = float('inf')
+    closest_pair = None
+    for pair in itertools.combinations(points, 2):
+        distance = euclidean_distance(pair[0], pair[1])
+        if distance < min_distance:
+            min_distance = distance
+            closest_pair = pair
+    return closest_pair
+# Sample set of points
+points = [(10, 0), (11, 5), (5, 3), (9, 3.5), (15, 3), (12.5, 7), (6, 6.5), (7.5, 4.5)]
+# Finding the closest pair of points
+result = closest_pair_brute_force(points)
+print(result)
+# output:
+((9, 3.5), (7.5, 4.5))
