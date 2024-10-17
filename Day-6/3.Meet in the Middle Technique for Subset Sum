@@ -1,0 +1,20 @@
+from itertools import combinations
+def closest_subset_sum(arr, target):
+    mid = len(arr) // 2
+    left_sums = {sum(combinations(arr[:mid], r)) for r in range(mid + 1)}
+    right_sums = {sum(combinations(arr[mid:], r)) for r in range(len(arr) - mid + 1)}
+    closest = float('inf')
+    for l in left_sums:
+        for r in right_sums:
+            total = l + r
+            if abs(target - total) < abs(target - closest):
+                closest = total
+    return closest
+set_a = [45, 34, 4, 12, 5, 2]
+target_a = 42
+set_b = [1, 3, 2, 7, 4, 6]
+target_b = 10
+print(closest_subset_sum(set_a, target_a)) 
+print(closest_subset_sum(set_b, target_b))  
+ # Output: Closest sum to 42
+# Output: Closest sum to 10
