@@ -1,0 +1,11 @@
+from itertools import combinations
+def meet_in_the_middle(arr, target):
+    mid = len(arr) // 2
+    left, right = arr[:mid], arr[mid:]
+    left_sums = {sum(comb) for r in range(len(left)+1) for comb in combinations(left, r)}
+    right_sums = {sum(comb) for r in range(len(right)+1) for comb in combinations(right, r)}
+    return any((target - r_sum) in left_sums for r_sum in right_sums)
+print(meet_in_the_middle([1, 3, 9, 2, 7, 12], 15))  
+print(meet_in_the_middle([3, 34, 4, 12, 5, 2], 15))  
+# Output: True
+# Output: True
