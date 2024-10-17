@@ -1,0 +1,15 @@
+def karatsuba(x, y):
+    if x < 10 or y < 10:
+        return x * y
+    n = max(len(str(x)), len(str(y)))
+    half = n // 2
+    x1, x0 = divmod(x, 10**half)
+    y1, y0 = divmod(y, 10**half)
+    z2 = karatsuba(x1, y1)
+    z0 = karatsuba(x0, y0)
+    z1 = karatsuba(x1 + x0, y1 + y0) - z2 - z0
+    return z2 * 10**(2*half) + z1 * 10**half + z0
+x, y = 1234, 5678
+z = karatsuba(x, y)
+print(f"z={z}")  
+# Expected Output: z=7016652
