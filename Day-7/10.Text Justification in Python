@@ -1,0 +1,11 @@
+def fullJustify(words, maxWidth):
+    res, line, num_of_letters = [], [], 0
+    for w in words:
+        if num_of_letters + len(w) + len(line) > maxWidth:
+            for i in range(maxWidth - num_of_letters):
+                line[i % (len(line) - 1 or 1)] += ' '
+            res.append(''.join(line))
+            line, num_of_letters = [], 0
+        line.append(w)
+        num_of_letters += len(w)
+    return res + [' '.join(line).ljust(maxWidth)]
