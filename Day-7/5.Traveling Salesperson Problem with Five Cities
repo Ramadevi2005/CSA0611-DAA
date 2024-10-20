@@ -1,0 +1,20 @@
+from itertools import permutations
+distances = {
+    ('A', 'B'): 10, ('A', 'C'): 15, ('A', 'D'): 20, ('A', 'E'): 25,
+    ('B', 'C'): 35, ('B', 'D'): 25, ('B', 'E'): 30,
+    ('C', 'D'): 30, ('C', 'E'): 20,
+    ('D', 'E'): 15
+}
+def tsp(cities):
+    min_route = None
+    min_distance = float('inf')
+    for perm in permutations(cities):
+        distance = sum(distances.get((perm[i], perm[i + 1]), distances.get((perm[i + 1], perm[i]))) for i in range(len(perm) - 1))
+        distance += distances.get((perm[-1], perm[0]), distances.get((perm[0], perm[-1])))
+        if distance < min_distance:
+            min_distance = distance
+            min_route = perm
+    return min_route, min_distance
+cities = ['A', 'B', 'C', 'D', 'E']
+route, total_distance = tsp(cities)
+print(f'Shortest route: {" -> ".join(route)} with total distance: {total_distance}')
