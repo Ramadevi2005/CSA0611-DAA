@@ -1,0 +1,8 @@
+class WordFilter:
+    def __init__(self, words):
+        self.words = words
+    def f(self, pref, suff):
+        return max((i for i, word in enumerate(self.words) if word.startswith(pref) and word.endswith(suff)), default=-1)
+wordFilter = WordFilter(["apple"])
+print(wordFilter.f("a", "e"))  
+# Output: 0
