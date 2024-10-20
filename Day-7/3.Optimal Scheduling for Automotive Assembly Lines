@@ -1,0 +1,20 @@
+import numpy as np
+from itertools import permutations
+station_times = np.array([[5, 9, 3], [6, 8, 4], [7, 6, 5]])
+transfer_times = np.array([[0, 2, 3], [2, 0, 4], [3, 4, 0]])
+dependencies = [(0, 1), (1, 2)]
+def total_time(schedule):
+    time = 0
+    for i in range(len(schedule)):
+        time += station_times[schedule[i]][i]
+        if i > 0:
+            time += transfer_times[schedule[i-1]][schedule[i]]
+    return time
+min_time = float('inf')
+best_schedule = None
+for perm in permutations(range(3)):
+    time = total_time(perm)
+    if time < min_time:
+        min_time = time
+        best_schedule = perm
+print(f"Optimal Schedule: {best_schedule}, Minimum Time: {min_time}")
